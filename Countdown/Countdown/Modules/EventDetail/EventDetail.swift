@@ -18,6 +18,8 @@ struct EventDetail: View {
 	func delete() {
 		timer.upstream.connect().cancel()
 		
+		CancelNotification(uuid: event.notificationUUID)
+		
 		persistenceController.container.viewContext.delete(event)
 		persistenceController.save()
 		

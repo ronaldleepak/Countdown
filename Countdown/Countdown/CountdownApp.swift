@@ -11,7 +11,7 @@ import SwiftUI
 struct CountdownApp: App {
 	let persistenceController = PersistenceController.shared
 	@Environment(\.scenePhase) var scenePhase
-	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate: AppDelegate
 	
     var body: some Scene {
         WindowGroup {
@@ -24,7 +24,4 @@ struct CountdownApp: App {
 			persistenceController.save()
 		}
     }
-	
-	// here to implement notification?
-	
 }

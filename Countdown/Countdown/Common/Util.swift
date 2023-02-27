@@ -7,6 +7,7 @@
 
 import Foundation
 import Swift
+import UserNotifications
 
 func DateToString(_ date: Date?) -> String {
 	if (date == nil) { return ""; }
@@ -24,4 +25,35 @@ func CountdownToString(_ date: Date?) -> String {
 	timeIntervalFormatter.allowedUnits = [.day, .hour, .minute, .second]
 	
 	return timeIntervalFormatter.string(from: timeSubtract) ?? ""
+}
+
+func CreateNotification(eventName: String, date: Date) -> UUID {
+	let content = UNMutableNotificationContent()
+	content.title = "Countdown"
+	content.body = eventName
+	
+	let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+	let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+	
+	// Create the request
+	let uuid = UUID()
+	let uuidString = uuid.uuidString
+	let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+
+	// Schedule the request with the system.
+	let notificationCenter = UNUserNotificationCenter.current()
+	notificationCenter.add(request) { (error) in
+		if error != nil {
+			// Handle any errors.
+		}
+	}
+	
+	return uuid
+}
+
+func CancelNotification(uuid: UUID?) {
+	if (uuid != nil) {
+		let notificationCenter = UNUserNotificationCenter.current()
+		notificationCenter.removePendingNotificationRequests(withIdentifiers: [uuid!.uuidString])
+	}
 }

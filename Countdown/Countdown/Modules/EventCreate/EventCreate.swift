@@ -22,6 +22,7 @@ struct EventCreate: View {
 		event.id = UUID()
 		event.name = name
 		event.datetime = datetime
+		event.notificationUUID = CreateNotification(eventName: name, date: datetime)
 
 		persistenceController.save()
 		
