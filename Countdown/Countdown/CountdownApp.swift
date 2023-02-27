@@ -18,6 +18,7 @@ struct CountdownApp: App {
 			NavigationView {
             	EventList().environment(\.managedObjectContext, persistenceController.container.viewContext)
 			}
+			.navigationViewStyle(.stack)
         }
 		.onChange(of: scenePhase) { _ in
 			persistenceController.save()
