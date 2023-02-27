@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct CountdownApp: App {
+	let persistenceController = PersistenceController.shared
+	@Environment(\.scenePhase) var scenePhase
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			NavigationView {
+            	EventList().environment(\.managedObjectContext, persistenceController.container.viewContext)
+			}
         }
+		.onChange(of: scenePhase) { _ in
+			persistenceController.save()
+		}
     }
+	
+	// here to implement notification?
+	
 }
