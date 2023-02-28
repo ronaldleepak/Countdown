@@ -45,6 +45,8 @@ struct EventDetail: View {
 				Text("Delete")
 			}.padding()
 		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(colorWithHexString(event.colorHex))
 		.navigationTitle("Create Event")
     }
 }
@@ -55,6 +57,7 @@ struct EventDetail_Previews: PreviewProvider {
 		
 		event.name = "Test"
 		event.datetime = Date.now
+		event.colorHex = "#22FFFF"
 		
 		return EventDetail(event: event)
 	}

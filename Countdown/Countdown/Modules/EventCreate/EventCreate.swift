@@ -13,6 +13,7 @@ struct EventCreate: View {
 	
 	@State private var name: String = ""
 	@State private var datetime: Date = Date.now
+	@State private var eventColor = Color.white
 	
 	@Environment(\.presentationMode) var presentation
 	
@@ -23,6 +24,7 @@ struct EventCreate: View {
 		event.id = UUID()
 		event.name = name
 		event.datetime = datetime
+		event.colorHex = hexStringFromColor(eventColor)
 		event.notificationUUID = notificationHandler.createNotification(eventName: name, date: datetime)
 
 		persistenceController.save()
@@ -49,12 +51,17 @@ struct EventCreate: View {
 					 Text("Select Time:")
 				}.padding()
 			}
+			HStack {
+				ColorPicker("Event color:", selection: $eventColor).padding()
+			}
 			Button() {
 				submit()
 			} label: {
 				Text("Submit")
 			}.padding()
 		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(eventColor)
 		.navigationTitle("Create Event")
     }
 }

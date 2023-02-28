@@ -12,13 +12,14 @@ struct EventListCell: View {
 //	var delegate: EventListViewDelegate?
 	
     var body: some View {
-		HStack() {
+		VStack() {
 			NavigationLink {
 				EventDetail(event: event)
 			} label: {
 				Text(event.name!)
 			}
 		}
+		.listRowBackground(colorWithHexString(event.colorHex))
     }
 }
 
@@ -28,6 +29,7 @@ struct EventListCell_Previews: PreviewProvider {
 		
 		event.name = "Test"
 		event.datetime = Date.now
+		event.colorHex = "#22FFFF"
 		
 		return EventListCell(event: event)
     }
