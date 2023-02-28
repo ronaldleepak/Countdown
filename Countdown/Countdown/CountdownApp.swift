@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct CountdownApp: App {
+	@StateObject var notificationCenter = NotificationCenter()
+	@StateObject var notificationHandler = NotificationHandler()
+	
 	let persistenceController = PersistenceController.shared
 	@Environment(\.scenePhase) var scenePhase
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate: AppDelegate

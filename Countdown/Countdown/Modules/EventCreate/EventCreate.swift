@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventCreate: View {
 	let persistenceController = PersistenceController.shared
+	@StateObject var notificationHandler = NotificationHandler()
 	
 	@State private var name: String = ""
 	@State private var datetime: Date = Date.now
@@ -22,7 +23,7 @@ struct EventCreate: View {
 		event.id = UUID()
 		event.name = name
 		event.datetime = datetime
-		event.notificationUUID = CreateNotification(eventName: name, date: datetime)
+		event.notificationUUID = notificationHandler.createNotification(eventName: name, date: datetime)
 
 		persistenceController.save()
 		

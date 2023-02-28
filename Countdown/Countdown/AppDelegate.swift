@@ -10,18 +10,14 @@ import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-		requestNotification()
-		
 		return true
 	}
+	//No callback in simulator -- must use device to get valid push token
+	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+		print(deviceToken)
+	}
 	
-	func requestNotification() {
-		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-			if success {
-				print("All set!")
-			} else if let error = error {
-				print(error.localizedDescription)
-			}
-		}
+	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+		print(error.localizedDescription)
 	}
 }

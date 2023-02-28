@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EventDetail: View {
+	@StateObject var notificationHandler = NotificationHandler()
+	
 	let persistenceController = PersistenceController.shared
 	let event: Event
 	var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -18,7 +20,7 @@ struct EventDetail: View {
 	func delete() {
 		timer.upstream.connect().cancel()
 		
-		CancelNotification(uuid: event.notificationUUID)
+		notificationHandler.cancelNotification(uuid: event.notificationUUID)
 		
 		persistenceController.container.viewContext.delete(event)
 		persistenceController.save()
