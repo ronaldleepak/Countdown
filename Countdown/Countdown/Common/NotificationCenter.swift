@@ -9,7 +9,7 @@ import Foundation
 import UserNotifications
 
 class NotificationCenter: NSObject, ObservableObject {
-	@Published var dumbData: UNNotificationResponse?
+	@Published var notificationResponse: UNNotificationResponse?
 	
 	override init() {
 		super.init()
@@ -23,7 +23,7 @@ extension NotificationCenter: UNUserNotificationCenterDelegate  {
 	}
 
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-		dumbData = response
+		notificationResponse = response
 		completionHandler()
 	}
 
