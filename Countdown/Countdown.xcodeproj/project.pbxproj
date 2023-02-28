@@ -15,6 +15,7 @@
 		B43DD39E29ABBA54004A5086 /* CountdownUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43DD39D29ABBA54004A5086 /* CountdownUITestsLaunchTests.swift */; };
 		B4686AC829AD64AE00706C94 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4686AC729AD64AE00706C94 /* NotificationHandler.swift */; };
 		B4686ACA29AD663E00706C94 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4686AC929AD663E00706C94 /* NotificationCenter.swift */; };
+		B49040B129AE8D8C0077C4BC /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49040B029AE8D8C0077C4BC /* Countdown.swift */; };
 		B4942C1329ABE00200CD57E3 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4942C1229ABE00200CD57E3 /* EventList.swift */; };
 		B4942C1F29ABE0A200CD57E3 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4942C1E29ABE0A200CD57E3 /* EventDetail.swift */; };
 		B4942C2329ABE34100CD57E3 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4942C2229ABE34100CD57E3 /* EventListCell.swift */; };
@@ -54,6 +55,7 @@
 		B43DD39D29ABBA54004A5086 /* CountdownUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B4686AC729AD64AE00706C94 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		B4686AC929AD663E00706C94 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		B49040B029AE8D8C0077C4BC /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		B4942C1229ABE00200CD57E3 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		B4942C1E29ABE0A200CD57E3 /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
 		B4942C2229ABE34100CD57E3 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		B43DD37F29ABBA52004A5086 /* Countdown */ = {
 			isa = PBXGroup;
 			children = (
+				B49040AF29AE8D720077C4BC /* BaseView */,
 				B4FF90BC29AC1D2100AB6E08 /* Common */,
 				B4942C0D29ABDF9000CD57E3 /* Modules */,
 				B43DD38029ABBA52004A5086 /* CountdownApp.swift */,
@@ -149,9 +152,25 @@
 			path = CountdownUITests;
 			sourceTree = "<group>";
 		};
+		B49040AF29AE8D720077C4BC /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				B49040B029AE8D8C0077C4BC /* Countdown.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		B49040B229AE9C420077C4BC /* EventArchive */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EventArchive;
+			sourceTree = "<group>";
+		};
 		B4942C0D29ABDF9000CD57E3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B49040B229AE9C420077C4BC /* EventArchive */,
 				B4942C1129ABDFCC00CD57E3 /* EventDetail */,
 				B4942C1029ABDFC500CD57E3 /* EventCreate */,
 				B4942C0E29ABDFA100CD57E3 /* EventList */,
@@ -335,6 +354,7 @@
 				B4686AC829AD64AE00706C94 /* NotificationHandler.swift in Sources */,
 				B43DD38129ABBA52004A5086 /* CountdownApp.swift in Sources */,
 				B4942C2629ABF1C300CD57E3 /* Model.xcdatamodeld in Sources */,
+				B49040B129AE8D8C0077C4BC /* Countdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

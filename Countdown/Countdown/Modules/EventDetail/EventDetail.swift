@@ -12,14 +12,10 @@ struct EventDetail: View {
 	
 	let persistenceController = PersistenceController.shared
 	let event: Event
-	var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 	
-	@State private var countdownString = ""
 	@Environment(\.presentationMode) var presentation
 	
 	func delete() {
-		timer.upstream.connect().cancel()
-		
 		notificationHandler.cancelNotification(uuid: event.notificationUUID)
 		
 		persistenceController.container.viewContext.delete(event)
@@ -30,12 +26,7 @@ struct EventDetail: View {
 	
     var body: some View {
 		VStack {
-			HStack {
-				Text(countdownString).padding()
-			}
-			.onReceive(timer) { time in
-				countdownString =  CountdownToString(event.datetime)
-			}
+			Countdown(targetDatetime: event.datetime)
 			HStack {
 				Text("Event Name:").padding()
 				Text(
